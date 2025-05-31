@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodara Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Moodara Extension Test Page</h1>
+    
+    <div class="test-section">
+        <h2>Asset Tests</h2>
+        <div id="asset-tests">
+            <p>Testing avatar.png: <span id="avatar-test">Loading...</span></p>
+            <p>Testing icon16.png: <span id="icon16-test">Loading...</span></p>
+            <p>Testing icon48.png: <span id="icon48-test">Loading...</span></p>
+            <p>Testing icon128.png: <span id="icon128-test">Loading...</span></p>
+            <p>Testing notification.mp3: <span id="notification-test">Loading...</span></p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Functionality Tests</h2>
+        <div id="functionality-tests">
+            <p>Testing quote generation: <span id="quote-test">Loading...</span></p>
+            <p>Testing timer functionality: <span id="timer-test">Loading...</span></p>
+            <p>Testing emotional release: <span id="release-test">Loading...</span></p>
+        </div>
+    </div>
+
+    <script>
+        // Test asset loading
+        function testAsset(path, elementId) {
+            const img = new Image();
+            img.onload = () => {
+                document.getElementById(elementId).textContent = '✅ Loaded successfully';
+                document.getElementById(elementId).className = 'success';
+            };
+            img.onerror = () => {
+                document.getElementById(elementId).textContent = '❌ Failed to load';
+                document.getElementById(elementId).className = 'error';
+            };
+            img.src = path;
+        }
+
+        // Test audio loading
+        function testAudio(path, elementId) {
+            const audio = new Audio();
+            audio.oncanplaythrough = () => {
+                document.getElementById(elementId).textContent = '✅ Loaded successfully';
+                document.getElementById(elementId).className = 'success';
+            };
+            audio.onerror = () => {
+                document.getElementById(elementId).textContent = '❌ Failed to load';
+                document.getElementById(elementId).className = 'error';
+            };
+            audio.src = path;
+        }
+
+        // Run tests
+        window.onload = () => {
+            // Test assets
+            testAsset('assets/avatar.png', 'avatar-test');
+            testAsset('assets/icon16.png', 'icon16-test');
+            testAsset('assets/icon48.png', 'icon48-test');
+            testAsset('assets/icon128.png', 'icon128-test');
+            testAudio('assets/notification.mp3', 'notification-test');
+
+            // Test quote generation
+            try {
+                const quote = getRandomQuote();
+                document.getElementById('quote-test').textContent = '✅ Working';
+                document.getElementById('quote-test').className = 'success';
+            } catch (e) {
+                document.getElementById('quote-test').textContent = '❌ Failed: ' + e.message;
+                document.getElementById('quote-test').className = 'error';
+            }
+
+            // Test timer
+            try {
+                const timer = new PomodoroTimer();
+                document.getElementById('timer-test').textContent = '✅ Initialized';
+                document.getElementById('timer-test').className = 'success';
+            } catch (e) {
+                document.getElementById('timer-test').textContent = '❌ Failed: ' + e.message;
+                document.getElementById('timer-test').className = 'error';
+            }
+
+            // Test emotional release
+            try {
+                const release = new EmotionalRelease();
+                document.getElementById('release-test').textContent = '✅ Initialized';
+                document.getElementById('release-test').className = 'success';
+            } catch (e) {
+                document.getElementById('release-test').textContent = '❌ Failed: ' + e.message;
+                document.getElementById('release-test').className = 'error';
+            }
+        };
+    </script>
+
+    <!-- Include extension scripts -->
+    <script src="js/quotes.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/popup.js"></script>
+</body>
+</html> 

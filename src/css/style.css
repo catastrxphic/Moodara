@@ -1,0 +1,266 @@
+:root {
+    --primary-color: #f8b5d3;
+    --secondary-color: #e2d1f9;
+    --accent-color: #a8d8ea;
+    --text-color: #4a4a4a;
+    --background-color: #fff5f8;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    width: 350px;
+    min-height: 500px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    padding: 20px;
+}
+
+/* Character Section */
+.character-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.quote-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    margin: 10px 0;
+}
+
+/* Release Section */
+.release-section {
+    margin: 20px 0;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    resize: none;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+#release-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#release-btn:hover {
+    transform: scale(1.02);
+}
+
+#animation-container {
+    margin: 20px 0;
+    height: 150px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid var(--primary-color);
+}
+
+#release-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 1;
+}
+
+#release-message {
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Timer Section */
+.timer-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+.timer-display {
+    font-size: 48px;
+    text-align: center;
+    margin: 20px 0;
+    color: var(--text-color);
+}
+
+.timer-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.timer-controls button {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#start-btn {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+#pause-btn {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+#reset-btn {
+    background-color: #ffb6b6;
+    color: white;
+}
+
+.timer-mode {
+    display: flex;
+    gap: 10px;
+}
+
+.timer-mode button {
+    flex: 1;
+    padding: 8px;
+    border: 2px solid var(--primary-color);
+    background-color: white;
+    color: var(--primary-color);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.timer-mode button.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Settings Section */
+.settings-section {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.settings-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 100;
+}
+
+.settings-panel {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.settings-panel.hidden {
+    display: none;
+}
+
+.api-key-container {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+#api-key-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#save-api-key {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#save-api-key:hover {
+    background-color: #45a049;
+}
+
+.api-key-status {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #666;
+}
+
+.api-key-status.success {
+    color: #4CAF50;
+}
+
+.api-key-status.error {
+    color: #f44336;
+}
+
+.api-key-help {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.api-key-help a {
+    color: #2196F3;
+    text-decoration: none;
+}
+
+.api-key-help a:hover {
+    text-decoration: underline;
+} 

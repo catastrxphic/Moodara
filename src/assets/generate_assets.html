@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate Moodara Assets</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .canvas-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            background: white;
+        }
+        button {
+            padding: 10px 20px;
+            background: #f8b5d3;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #e2a1c0;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas-container">
+        <h3>Avatar (120x120)</h3>
+        <canvas id="avatarCanvas" width="120" height="120"></canvas>
+        <button onclick="downloadCanvas('avatarCanvas', 'avatar.png')">Download Avatar</button>
+    </div>
+
+    <div class="canvas-container">
+        <h3>Extension Icons</h3>
+        <canvas id="icon16Canvas" width="16" height="16"></canvas>
+        <button onclick="downloadCanvas('icon16Canvas', 'icon16.png')">Download 16x16</button>
+        
+        <canvas id="icon48Canvas" width="48" height="48"></canvas>
+        <button onclick="downloadCanvas('icon48Canvas', 'icon48.png')">Download 48x48</button>
+        
+        <canvas id="icon128Canvas" width="128" height="128"></canvas>
+        <button onclick="downloadCanvas('icon128Canvas', 'icon128.png')">Download 128x128</button>
+    </div>
+
+    <script>
+        // Draw cute character avatar
+        function drawAvatar(ctx) {
+            // Face
+            ctx.fillStyle = '#FFE4E1';
+            ctx.beginPath();
+            ctx.arc(60, 60, 40, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Eyes
+            ctx.fillStyle = '#4A4A4A';
+            ctx.beginPath();
+            ctx.arc(45, 50, 5, 0, Math.PI * 2);
+            ctx.arc(75, 50, 5, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Blush
+            ctx.fillStyle = '#FFB6C1';
+            ctx.beginPath();
+            ctx.arc(35, 60, 8, 0, Math.PI * 2);
+            ctx.arc(85, 60, 8, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Smile
+            ctx.strokeStyle = '#4A4A4A';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(60, 65, 15, 0.2 * Math.PI, 0.8 * Math.PI);
+            ctx.stroke();
+
+            // Hair
+            ctx.fillStyle = '#F8B5D3';
+            ctx.beginPath();
+            ctx.arc(60, 30, 25, Math.PI, 0);
+            ctx.fill();
+        }
+
+        // Draw extension icon
+        function drawIcon(ctx, size) {
+            // Background
+            ctx.fillStyle = '#F8B5D3';
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Letter M
+            ctx.fillStyle = 'white';
+            ctx.font = `bold ${size * 0.6}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('M', size/2, size/2);
+        }
+
+        // Initialize all canvases
+        function initCanvases() {
+            // Avatar
+            const avatarCtx = document.getElementById('avatarCanvas').getContext('2d');
+            drawAvatar(avatarCtx);
+
+            // Icons
+            const icon16Ctx = document.getElementById('icon16Canvas').getContext('2d');
+            const icon48Ctx = document.getElementById('icon48Canvas').getContext('2d');
+            const icon128Ctx = document.getElementById('icon128Canvas').getContext('2d');
+
+            drawIcon(icon16Ctx, 16);
+            drawIcon(icon48Ctx, 48);
+            drawIcon(icon128Ctx, 128);
+        }
+
+        // Download canvas as PNG
+        function downloadCanvas(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // Initialize when page loads
+        window.onload = initCanvases;
+    </script>
+</body>
+</html> 

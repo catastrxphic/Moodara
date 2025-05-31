@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodara</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Character Section -->
+        <div class="character-section">
+            <div class="avatar">
+                <img src="assets/avatar.png" alt="Moodara Character" id="character">
+            </div>
+            <div class="quote-container">
+                <p id="quote-text">Loading...</p>
+            </div>
+        </div>
+
+        <!-- Emotional Release Section -->
+        <div class="release-section">
+            <textarea id="negative-thoughts" placeholder="Write your negative thoughts here..."></textarea>
+            <button id="release-btn">Release</button>
+            <div id="animation-container" class="hidden">
+                <canvas id="release-animation"></canvas>
+            </div>
+            <div id="release-message" class="hidden">
+                <p>You've let go of this. Let's move forward.</p>
+            </div>
+        </div>
+
+        <!-- Pomodoro Timer Section -->
+        <div class="timer-section">
+            <div class="timer-display">
+                <span id="minutes">25</span>:<span id="seconds">00</span>
+            </div>
+            <div class="timer-controls">
+                <button id="start-btn">Start</button>
+                <button id="pause-btn">Pause</button>
+                <button id="reset-btn">Reset</button>
+            </div>
+            <div class="timer-mode">
+                <button id="work-mode" class="active">Work</button>
+                <button id="break-mode">Break</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/quotes.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/popup.js"></script>
+</body>
+</html> 
